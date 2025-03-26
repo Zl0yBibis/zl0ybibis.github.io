@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1251">
+    <link rel="stylesheet" href="styles.css">
+    <title>Выбор действия</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Выберите действие</h1>
+
+        <a href="admin-page.html" id="adminBtn" class="btn btn-primary">Администрирование</a>
+        <a href="user-page.html" class="btn btn-secondary">Пользовательская страница</a>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const username = urlParams.get('username');
+
+        if (username !== 'admin') {
+            document.getElementById('adminBtn').classList.add('btn-disabled');
+            document.getElementById('adminBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

@@ -1,25 +1,50 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=cp1251">
     <link rel="stylesheet" href="styles.css">
-    <title>Sign in</title>
+    <title>Авторизация</title>
 </head>
+<body>
+    <div class="login-container">
+        <h1>Вход в систему</h1>
 
-<Body>
-  <main>
-    <div class="form_auth_block">
-      <div class="form_auth_block_content">
-        <p class="form_auth_block_head_text">Авторизация</p>
-        <form class="form_auth_style" action="#" method="post">
-          <label>Введите вашу почту</label>
-          <input type="email" name="auth_email" placeholder="Введите вашу почту" required >
-          <label>Введите пароль</label>
-          <input type="password" name="auth_pass" placeholder="Введите пароль" required >
-          <button class="form_auth_button" type="submit" name="form_auth_submit">Войти</button>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Логин</label>
+                <input type="text" id="username" name="username" placeholder="Введите ваш логин" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Пароль</label>
+                <input type="password" id="password" name="password" placeholder="Введите ваш пароль" required>
+            </div>
+
+            <button type="submit" class="btn-login">Войти</button>
+
+            <div id="errorMessage" class="error-message">
+                Неверный логин или пароль
+            </div>
         </form>
-      </div>
     </div>
-  </main>
-</Body>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            if (username === 'admin' && password === '12345') {
+                window.location.href = 'buttons.html?username=' + encodeURIComponent(username);
+            } else if (username === 'user' && password === '12345') {
+                window.location.href = 'buttons.html?username=' + encodeURIComponent(username);
+            } else {
+                document.getElementById('errorMessage').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
