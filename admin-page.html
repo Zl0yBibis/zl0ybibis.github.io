@@ -12,9 +12,11 @@
         <img src="admin.jpg" alt="admin" style="width:auto;">
     </picture>
     <script>
-        if (document.referrer !='user-page.html') {
-            window.location = "buttons.html";
-        };
+        const username = urlParams.get('username');
+        
+        if (username !== 'user') {
+            document.location.href = 'buttons.thml;
+        }
     </script>
 </body>
 </html>
